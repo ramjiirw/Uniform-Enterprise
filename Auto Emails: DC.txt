@@ -15,9 +15,9 @@ Email 1: Applicant/Complainant Receipt Acknowledgement PLAIN
  //ToName String
  
  
- //ToEmail String
+//ToEmail String
 
-string ToEmail = data.GetSQLValue("SELECT (CONTADD) FROM BCAPPCONTACT c WHERE c.PKEYVAL='" + data.KEYVAL.ToString() +  "' AND c.BCCONTYPE = 'EMAIL' AND c.CONTADD LIKE('%@%')");
+string ToEmail = data.GetSQLValue("SELECT (CONTADD) FROM DCCONTACT c WHERE c.PKEYVAL='" + data.KEYVAL.ToString() +  "' AND c.DCCONTTYPE = 'EMAIL' AND c.CONTADD LIKE('%@%')");
 
 
 //EMAIL BODY
@@ -73,7 +73,7 @@ if ((iEmail < 1))
 
 return false;
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//END
 
 Email 1: Applicant/Complainant Receipt Acknowledgement HTML
 ---------------------------------------------------------------------------------------
