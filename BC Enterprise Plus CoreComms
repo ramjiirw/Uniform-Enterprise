@@ -1,3 +1,7 @@
+//CoreComms 1 - Cases Valid Last X Days
+
+//Calculated Fields
+
 //Core Code - Int
 
 //DaysToTarget
@@ -12,4 +16,4 @@ int iDaysToTarget = data.CalculateCalendarDaysBetween(data.TodayD, targetDate);
 string sDaysToTarget = iDaysToTarget.ToString();
 return iDaysToTarget;
 
-//
+
