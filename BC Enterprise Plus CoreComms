@@ -1,10 +1,7 @@
 //CoreComms 1 - Cases Valid Last X Days
 
-//Calculated Fields
 
-//Core Code - Int
-
-//DaysToTarget
+//DaysToTarget [Calculated Fields Tab - Core Code - Type: INT)
 DateTime targetDate = data.TARGED;
 
 if (data.AGREEDD != null && data.AGREEDD > DateTime.MinValue)
