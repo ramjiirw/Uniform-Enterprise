@@ -8,8 +8,6 @@ Email 1: Applicant/Complainant Receipt Acknowledgement PLAIN
 
 
 
-
-
 //Update Task: Email Coding
 
  //ToName String
