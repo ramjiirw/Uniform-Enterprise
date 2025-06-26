@@ -1,1 +1,10 @@
+//CoreComms 1 - Cases Responded Last X Days
 
+
+//SRSTATDesc 
+//[Calculated Fields Tab - Core Code - Type: CHAR)
+
+string sSRSTAT = data.GetSQLValue("SELECT (CNCODE.CODETEXT)from CNCODE where  CNCODE.CODEVALUE='" + data.SRSTAT.ToString() +  "' and CNCODE.LISTNAME='SRSTAT' " );
+return sSRSTAT;
+
+//END
