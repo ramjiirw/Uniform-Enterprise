@@ -1,1 +1,46 @@
+//CoreComms 1 - Cases Valid Last X Days
 
+
+//LISTATDesc 
+//[Calculated Fields Tab - Core Code - Type: CHAR)
+
+string sLISTAT = data.GetSQLValue("SELECT (CNCODE.CODETEXT)from CNCODE where  CNCODE.CODEVALUE='" + data.LISTAT.ToString() +  "' and CNCODE.LISTNAME='LISTAT' " );
+return sLISTAT;
+
+//END
+
+
+//LIApplicantAgent
+[Calculated Fields Tab - Core Code - Type: CHAR)
+
+string sApplicant = data.GetSQLValue(
+    "SELECT FULLNAME FROM LIPARTY WHERE PKEYVAL = '" 
+    + data.KEYVAL.ToString() + "' AND LIPTYTYPE = 'LIAPPL'");
+
+string sApplicantAddress = data.GetSQLValue(
+    "SELECT ADDRESS FROM LIPARTY WHERE PKEYVAL = '" 
+    + data.KEYVAL.ToString() + "' AND LIPTYTYPE = 'LIAPPL'");
+
+// Tidy the applicant address for output
+sApplicantAddress = sApplicantAddress.Replace("\r", " ");
+
+string sAgent = data.GetSQLValue(
+    "SELECT FULLNAME FROM LIPARTY WHERE PKEYVAL = '" 
+    + data.KEYVAL.ToString() + "' AND LIPTYTYPE = 'LIAGNT'");
+
+string sAgentAddress = data.GetSQLValue(
+    "SELECT ADDRESS FROM LIPARTY WHERE PKEYVAL = '" 
+    + data.KEYVAL.ToString() + "' AND LIPTYTYPE = 'LIAGNT'");
+
+// Tidy the agent address for output
+sAgentAddress = sAgentAddress.Replace("\r", " ");
+
+if (string.IsNullOrEmpty(sAgent))
+
+    return sApplicant + " - " + sApplicantAddress;
+
+else
+
+    return sApplicant + " C/O Agent " + sAgent + " - " + sAgentAddress;
+
+//END
