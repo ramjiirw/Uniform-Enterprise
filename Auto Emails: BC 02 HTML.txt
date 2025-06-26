@@ -1,5 +1,4 @@
-Email 1: Applicant/Complainant Receipt Acknowledgement HTML
----------------------------------------------------------------------------------------
+//Email 2: Applicant/Complainant Receipt Acknowledgement HTML
 
 
 //EMAIL BODY
