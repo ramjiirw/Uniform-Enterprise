@@ -18,7 +18,9 @@ string emailbody =
     "</div>" +
 
     "<p>Kind Regards,</p>" +
+
     "<p>Edgehill Planning Department</p>" +
+
     "<p><em>Automated Workflow</em></p>";
 
 
