@@ -1,0 +1,65 @@
+//Email 1: Applicant/Complainant Receipt Acknowledgement PLAIN
+
+
+//Update Task: Email Coding
+
+ //ToName String
+ 
+ 
+ //ToEmail String
+
+string ToEmail = data.GetSQLValue("SELECT (CONTADD) FROM BCAPPCONTACT c WHERE c.PKEYVAL='" + data.KEYVAL.ToString() +  "' AND c.BCCONTYPE = 'EMAIL' AND c.CONTADD LIKE('%@%')");
+
+
+//EMAIL BODY
+
+string emailbody = 
+Environment.NewLine +
+Environment.NewLine +
+Environment.NewLine +
+Environment.NewLine +
+Environment.NewLine +
+Environment.NewLine +
+"Automated Workflow Notification Email";
+
+
+//EMAIL COMMAND - ***DO NOT TOUCH***
+
+//This section relates to the SMTP setting in the Workflow set up - add the server details
+System.Net.Mail.SmtpClient smtp = new 
+                System.Net.Mail.SmtpClient(Plantech.Apps.Core.LibCore.RipOptions.Email.ucRipOptionPageEmailSmtp.SMTPServer);
+System.Net.Mail.MailMessage mailMessage = new System.Net.Mail.MailMessage();    
+mailMessage.Priority = System.Net.Mail.MailPriority.High;
+smtp.Port = Plantech.Apps.Core.LibCore.RipOptions.Email.ucRipOptionPageEmailSmtp.SMTPPort;
+
+
+//EMAIL COMMAND ABOVE - ***DO NOT TOUCH***
+
+
+//EMAIL HEADERS
+
+mailMessage.To.Add();
+//mailMessage.Bcc.Add("email here");
+//mailMessage.CC.Add("email here");
+mailMessage.Subject = " " + data.REFVAL + " - " +data.ADDRESS.Replace("\r"," ");
+mailMessage.From = new System.Net.Mail.MailAddress("email here");
+mailMessage.Body = emailbody;
+
+
+//TASK DETAILS ARE USED TO IDENTIFY THE CASES AND TASKS IN THE AETASK TABLE FOR REPORTING PURPOSES
+
+task.TaskTitle = "";
+task.TaskHint = data.REFVAL;
+task.TaskHelp = data.ADDRESS.Replace("\r"," ");
+
+
+//COMPLETION
+
+//This section is the send email command completion. ***you must add/change the task definition ID to match the Task you are creating***
+int iEmail = data.GetSQLValueInt("SELECT COUNT(*) FROM AETASK s  WHERE s.TASKTABLEKEY='" + data.KEYVAL.ToString() + "' AND  s.TASKDEFID=3000");
+{
+if ((iEmail < 1)) 
+               smtp.Send(mailMessage);
+}
+
+return false;
