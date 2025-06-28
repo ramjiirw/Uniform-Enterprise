@@ -1,1 +1,24 @@
+//EMAIL BODY
 
+string emailbody =
+    "<p>Dear " + ToName + ",</p>" +
+
+    "<ul>" +
+        "<li>Planning Application: <strong>" + Ref + "</strong></li>" +
+        "<li>Site Address: " + SiteAddress + "</li>" +
+        "<li>Proposal: " + Proposal + "</li>" +
+    "</ul>" +
+
+    "<div style=\"padding: 15px; border-left: 4px solid #006400; margin: 10px 0;\">" +
+        "<p>We received your application (" + Type + ") on " + Received + ".</p>" +
+        "<p>We are processing your application and we will write to you further to let you know your application is valid or if we require further information.</p>" +
+    "</div>" +
+
+    "<p>Kind Regards,</p>" +
+    "<p>Edgehill Planning Department</p>" +
+    "<p><em>Automated Workflow</em></p>";
+
+
+//EMAIL HEADERS
+
+mailMessage.IsBodyHtml = true;
