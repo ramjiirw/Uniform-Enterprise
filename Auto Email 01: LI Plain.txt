@@ -4,11 +4,10 @@
 //Update Task: Email Coding
 
  //ToName String
- 
- 
- //ToEmail String
+ string ToName = data.GetSQLValue("SELECT (FULLNAME) FROM LIPARTY a WHERE a.PKEYVAL='" + data.KEYVAL.ToString() + "' AND a.FULLNAME IS NOT NULL AND a.LIPTYTYPE IN('LIAPPL')");
 
-string ToEmail = data.GetSQLValue("SELECT (CONTADD) FROM BCAPPCONTACT c WHERE c.PKEYVAL='" + data.KEYVAL.ToString() +  "' AND c.BCCONTYPE = 'EMAIL' AND c.CONTADD LIKE('%@%')");
+ //ToEmail String
+string ToEmail = data.GetSQLValue("SELECT (CONTADD) FROM LIPCONTACT b, LIPARTY a  WHERE b.PKEYVAL=a.KEYVAL AND a.PKEYVAL='" + data.KEYVAL.ToString() +  "' AND b.LICONTTYPE='EMAIL' AND b.CONTADD LIKE('%@%') and a.LIPTYTYPE IN('LIAPPL')");
 
 
 //EMAIL BODY
