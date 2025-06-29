@@ -1,3 +1,5 @@
+//Email 2: BC Checklist / DC Tasks / LI Checks / SR Actions
+
 --Sweep Clause
 
 AND EXISTS (SELECT 1 FROM XIVISIT vi, XIREC xi, SRREC sr, SRSCONTACT srs
@@ -16,8 +18,6 @@ AND srs.CONTADDR LIKE '%@%'
 
 
 --End Sweep Clause
-
-//Email 2: BC Checklist / DC Tasks / LI Checks / SR Actions
 
 
 //Update Task: Email Coding
