@@ -1,3 +1,21 @@
 --Sweep Clause
 
+AND EXISTS (SELECT 1 FROM XIVISIT vi, XIREC xi, SRREC sr, SRSCONTACT srs
+WHERE 
+vi.KEYVAL = XIACTION.PKEYVAL
+AND vi.PKEYVAL = xi.KEYVAL
+AND xi.MDKEYVAL = sr.KEYVAL
+AND sr.KEYVAL = srs.PKEYVAL
+
+AND sr.REFVAL = '25/00044/ABANDO' -- Use a case to narrow down the case to test on
+AND sr.CONTACT IS NOT NULL
+AND sr.ACTURESLD IS NULL
+AND srs.SRCONTTYPE = 'EMAIL'
+AND srs.CONTADDR LIKE '%@%'
+)
+
+
+--End Sweep Clause
+
+
 
