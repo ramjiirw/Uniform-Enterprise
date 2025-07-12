@@ -42,7 +42,7 @@ string ToEmail = data.GetSQLValue(
     "AND xa.KEYVAL = '" + data.KEYVAL + "' " +
     "AND ROWNUM = 1");
 
-//Strings
+//Field Strings
 
 string Detailsquery = @"SELECT sr.DETAILS 
                 FROM SRREC sr
