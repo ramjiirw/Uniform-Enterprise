@@ -19,7 +19,7 @@ Email 1: Applicant/Complainant Receipt Acknowledgement PLAIN
 
 string ToEmail = data.GetSQLValue("SELECT (CONTADD) FROM DCCONTACT c WHERE c.PKEYVAL='" + data.KEYVAL.ToString() +  "' AND c.DCCONTTYPE = 'EMAIL' AND c.CONTADD LIKE('%@%')");
 
-//Fields
+//Field Strings
 
 
 //EMAIL BODY
