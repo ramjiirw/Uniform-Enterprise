@@ -9,6 +9,8 @@
  //ToEmail String
 string ToEmail = data.GetSQLValue("SELECT (CONTADD) FROM LIPCONTACT b, LIPARTY a  WHERE b.PKEYVAL=a.KEYVAL AND a.PKEYVAL='" + data.KEYVAL.ToString() +  "' AND b.LICONTTYPE='EMAIL' AND b.CONTADD LIKE('%@%') and a.LIPTYTYPE IN('LIAPPL')");
 
+//Fields
+
 
 //EMAIL BODY
 
@@ -40,7 +42,7 @@ smtp.Port = Plantech.Apps.Core.LibCore.RipOptions.Email.ucRipOptionPageEmailSmtp
 mailMessage.To.Add();
 //mailMessage.Bcc.Add("email here");
 //mailMessage.CC.Add("email here");
-mailMessage.Subject = " " + data.REFVAL + " - " +data.ADDRESS.Replace("\r"," ");
+mailMessage.Subject = " " +  + " - " + ;
 mailMessage.From = new System.Net.Mail.MailAddress("email here");
 mailMessage.Body = emailbody;
 
@@ -48,8 +50,8 @@ mailMessage.Body = emailbody;
 //TASK DETAILS ARE USED TO IDENTIFY THE CASES AND TASKS IN THE AETASK TABLE FOR REPORTING PURPOSES
 
 task.TaskTitle = "";
-task.TaskHint = data.REFVAL;
-task.TaskHelp = data.ADDRESS.Replace("\r"," ");
+task.TaskHint = ;
+task.TaskHelp = ;
 
 
 //COMPLETION
