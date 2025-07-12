@@ -11,7 +11,7 @@
 string ToEmail = data.GetSQLValue("SELECT (CONTADD) FROM BCAPPCONTACT c WHERE c.PKEYVAL='" + data.KEYVAL.ToString() +  "' AND c.BCCONTYPE = 'EMAIL' AND c.CONTADD LIKE('%@%')");
 
 
-//FIELDS
+//Field Strings
 
 
 //EMAIL BODY
