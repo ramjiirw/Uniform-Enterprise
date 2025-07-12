@@ -9,7 +9,7 @@
  //ToEmail String
 string ToEmail = data.GetSQLValue("SELECT (CONTADD) FROM LIPCONTACT b, LIPARTY a  WHERE b.PKEYVAL=a.KEYVAL AND a.PKEYVAL='" + data.KEYVAL.ToString() +  "' AND b.LICONTTYPE='EMAIL' AND b.CONTADD LIKE('%@%') and a.LIPTYTYPE IN('LIAPPL')");
 
-//Fields
+//Field Strings
 
 
 //EMAIL BODY
