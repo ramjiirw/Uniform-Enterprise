@@ -19,6 +19,8 @@ Email 1: Applicant/Complainant Receipt Acknowledgement PLAIN
 
 string ToEmail = data.GetSQLValue("SELECT (CONTADD) FROM DCCONTACT c WHERE c.PKEYVAL='" + data.KEYVAL.ToString() +  "' AND c.DCCONTTYPE = 'EMAIL' AND c.CONTADD LIKE('%@%')");
 
+//Fields
+
 
 //EMAIL BODY
 
@@ -50,7 +52,7 @@ smtp.Port = Plantech.Apps.Core.LibCore.RipOptions.Email.ucRipOptionPageEmailSmtp
 mailMessage.To.Add();
 //mailMessage.Bcc.Add("email here");
 //mailMessage.CC.Add("email here");
-mailMessage.Subject = " " + data.REFVAL + " - " +data.ADDRESS.Replace("\r"," ");
+mailMessage.Subject = " " +  + " - " + ;
 mailMessage.From = new System.Net.Mail.MailAddress("email here");
 mailMessage.Body = emailbody;
 
@@ -58,8 +60,8 @@ mailMessage.Body = emailbody;
 //TASK DETAILS ARE USED TO IDENTIFY THE CASES AND TASKS IN THE AETASK TABLE FOR REPORTING PURPOSES
 
 task.TaskTitle = "";
-task.TaskHint = data.REFVAL;
-task.TaskHelp = data.ADDRESS.Replace("\r"," ");
+task.TaskHint = ;
+task.TaskHelp = ;
 
 
 //COMPLETION
