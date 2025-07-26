@@ -11,7 +11,7 @@ return sLISTAT;
 
 
 //LIApplicantAgent
-[Calculated Fields Tab - Core Code - Type: CHAR)
+//[Calculated Fields Tab - Core Code - Type: CHAR)
 
 string sApplicant = data.GetSQLValue(
     "SELECT FULLNAME FROM LIPARTY WHERE PKEYVAL = '" 
