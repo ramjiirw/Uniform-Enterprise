@@ -1,0 +1,65 @@
+//Email 2: BC Checklist / DC Tasks / LI Checks / SR Actions
+
+--Sweep Clause
+
+AND EXISTS (SELECT 1 FROM XIVISIT vi, XIREC xi, SRREC sr, SRSCONTACT srs
+WHERE 
+vi.KEYVAL = XIACTION.PKEYVAL
+AND vi.PKEYVAL = xi.KEYVAL
+AND xi.MDKEYVAL = sr.KEYVAL
+AND sr.KEYVAL = srs.PKEYVAL
+
+AND sr.REFVAL = '25/00044/ABANDO' -- Use a case to narrow down the case to test on
+AND sr.CONTACT IS NOT NULL
+AND sr.ACTURESLD IS NULL
+AND srs.SRCONTTYPE = 'EMAIL'
+AND srs.CONTADDR LIKE '%@%'
+)
+
+
+--End Sweep Clause
+
+
+//Update Task: Email Coding
+
+ //ToName String
+String ToName = data.GetSQLValue(
+    "SELECT sr.CONTACT FROM XIACTION xa " +
+    "JOIN XIVISIT vi ON xa.PKEYVAL = vi.KEYVAL " +
+    "JOIN XIREC xi ON vi.PKEYVAL = xi.KEYVAL " +
+    "JOIN SRREC sr ON xi.MDKEYVAL = sr.KEYVAL " +
+    "WHERE xa.KEYVAL = '" + data.KEYVAL + "'");
+
+ //ToEmail String
+string ToEmail = data.GetSQLValue(
+    "SELECT srs.CONTADDR FROM XIACTION xa " +
+    "JOIN XIVISIT vi ON vi.KEYVAL = xa.PKEYVAL " +
+    "JOIN XIREC xi ON vi.PKEYVAL = xi.KEYVAL " +
+    "JOIN SRREC sr ON xi.MDKEYVAL = sr.KEYVAL " +
+    "JOIN SRSCONTACT srs ON sr.KEYVAL = srs.PKEYVAL " +
+    "WHERE srs.SRCONTTYPE = 'EMAIL' " +
+    "AND srs.CONTADDR LIKE '%@%' " +
+    "AND xa.KEYVAL = '" + data.KEYVAL + "' " +
+    "AND ROWNUM = 1");
+
+//Field Strings
+
+string Detailsquery = @"SELECT sr.DETAILS 
+                FROM SRREC sr
+                JOIN XIREC xr ON sr.KEYVAL = xr.MDKEYVAL
+                JOIN XIVISIT xv ON xr.KEYVAL = xv.PKEYVAL
+                JOIN XIACTION xa ON xv.KEYVAL = xa.PKEYVAL
+                WHERE xa.KEYVAL = '" + data.KEYVAL.ToString() + "'";
+string Details = data.GetSQLValue (Detailsquery);
+
+string Action = data.GetSQLValue("SELECT c.CODETEXT FROM XIACTCODEVIEW c WHERE c.XIVISACT='" + data.LUPKEYVAL.XIVTYPE + "-" + data.XIACT + "'");
+
+string query = "SELECT COMMENTS FROM XIACTCOMM WHERE PKEYVAL = '" + data.KEYVAL.ToString() + "' AND COMMENTS IS NOT NULL";
+string ActionNotes = data.GetSQLValue(query);
+
+
+
+
+
+
+
