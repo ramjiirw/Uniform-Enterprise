@@ -46,8 +46,8 @@ mailMessage.To.Add();
 //mailMessage.CC.Add("email here");
 mailMessage.Subject = " " +  + " - " + ;
 mailMessage.From = new System.Net.Mail.MailAddress("email here");
-mailMessage.IsBodyHtml = false;
-//mailMessage.IsBodyHtml = true;
+mailMessage.Body = emailbody;
+mailMessage.IsBodyHtml = true;
 
 
 //TASK DETAILS ARE USED TO IDENTIFY THE CASES AND TASKS IN THE AETASK TABLE FOR REPORTING PURPOSES
